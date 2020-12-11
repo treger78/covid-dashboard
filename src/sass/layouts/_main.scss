@@ -1,0 +1,20 @@
+.dashboard {
+    display: flex;
+    justify-content: space-between;
+    height: 500px;
+
+    &__general-info {
+        flex-basis: 17%;
+        background-color: red;
+    }
+
+    &__maps {
+        flex-basis: 55%;
+        background-color: yellow;
+    }
+
+    &__cases {
+        flex-basis: 27%;
+        background-color: green;
+    }
+}
