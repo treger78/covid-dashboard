@@ -1,0 +1,61 @@
+.dashboard__map {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.maps {
+  &__map {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 93%;
+    border: 1px solid gray;
+  }
+  &__tabs {
+    margin-left: 10px;
+  }
+}
+
+.map {
+  &-radio {
+    display: none;
+  }
+}
+
+.tabs {
+  &__tab {
+    margin: 0;
+    font-size: 14px;
+    padding: 5px;
+    border-left: 1px solid gray;
+    border-right: 1px solid gray;
+    border-bottom: 3px solid gray;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+#comulative:checked ~ #comulative-cases,
+#active:checked ~ #active-cases,
+#incidence:checked ~ #incidence-rate,
+#fatality:checked ~ #fatality-ratio,
+#testing:checked ~ #testing-rate {
+  display: flex;
+}
+
+#comulative:checked ~ .maps__tabs #comulative-tab,
+#active:checked ~ .maps__tabs #active-tab,
+#incidence:checked ~ .maps__tabs #incidence-tab,
+#fatality:checked ~ .maps__tabs #fatality-tab,
+#testing:checked ~ .maps__tabs #testing-tab {
+  background-color: gray;
+  border-bottom: 3px solid blue;
+}
+
+div.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
