@@ -1,69 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>Covid-dashboard</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid-dashboard</title>
 
-   <!-- Google Fonts -->
-   <link 
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-   />
-    <!-- Bootstrap core CSS -->
-   <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
-      rel="stylesheet"
-   />
-   <!-- Material Design Bootstrap -->
-   <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
-      rel="stylesheet"
-   />
+  <!-- Google Fonts -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Material Design Bootstrap -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet" />
 
-   <link rel="stylesheet" href="./src/sass/style.css">
+  <link rel="stylesheet" href="./src/sass/style.css">
 </head>
+
 <body>
-   <header>
-      
-   </header> 
-    
-   <main class="dashboard">
-   
+  <header>
+
+  </header>
+
+  <main class="dashboard">
+
+    <!-- You can change it by your discretion -->
+    <section class="dashboard__general-info">
+      <aside class="general-info__global"></aside>
+      <aside class="general-info__by-country"></aside>
+    </section>
+
+    <!-- You can change it by your discretion -->
+    <section class="dashboard__maps">
+      <!-- Smth -->
+    </section>
+
+    <section class="dashboard__cases">
+
       <!-- You can change it by your discretion -->
-      <section class="dashboard__general-info">
-         <aside class="general-info__global"></aside>
-         <aside class="general-info__by-country"></aside>
-      </section>
-         
+      <article class="cases__info">
+        <div class="covid-table-wrapper">
+          <div class="controls top">
+            <button type="button" class="arrow left">&vltri;</button>
+            <button type="button" class="select-btn" data-period onresize="fn()">Total cases</button>
+            <button type="button" class="arrow right">&vrtri;</button>
+
+            <div class="popup-menu">
+              <div class="item">Total cases</div>
+              <div class="item">New cases</div>
+            </div>
+          </div>
+
+          <table class="covid-table">
+            <thead class="covid-table-caption">
+              <tr>
+                <td colspan="2" data-caption="global">Global</td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Confirmed</td>
+                <td data-status="confirmed"></td>
+              </tr>
+              <tr>
+                <td>Recovered</td>
+                <td data-status="recovered"></td>
+              </tr>
+              <tr>
+                <td>Deaths</td>
+                <td data-status="deaths"></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="controls bottom">
+            <button type="button" class="arrow left">&vltri;</button>
+            <button type="button" class="select-btn" data-unit>Absolute values</button>
+            <button type="button" class="arrow right">&vrtri;</button>
+
+            <div class="popup-menu">
+              <div class="item">Absolute values</div>
+              <div class="item">Per 100K population</div>
+            </div>
+          </div>
+        </div>
+      </article>
+
       <!-- You can change it by your discretion -->
-      <section class="dashboard__maps">
-         <!-- Smth -->
-      </section>
-      
-      <section class="dashboard__cases">
-         
-         <!-- You can change it by your discretion -->
-         <article class="cases__info">
-            <!-- cases, deaths, recovered ... -->
-            <aside class="cases__covid"></aside>
-            <aside class="cases__deaths"></aside>
-            <aside class="cases__recovered"></aside>
-         </article>
+      <article class="cases__diagrams">
+        <!-- Smth -->
+      </article>
 
-         <!-- You can change it by your discretion -->
-         <article class="cases__diagrams">
-            <!-- Smth -->
-         </article>
+    </section>
 
-      </section>
-      
-   </main>
+  </main>
 
 
-   <footer>
-   
-   </footer>
+  <footer>
 
+  </footer>
 </body>
+
 </html>
