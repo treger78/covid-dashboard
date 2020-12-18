@@ -1,6 +1,88 @@
 .cases__info .covid-table-wrapper {
   position: relative;
   width: 100%;
+
+  .resize-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+
+    svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #606060;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 0 10px 2px #000;
+      padding: 2px;
+      fill: #bdbdbd;
+      opacity: 0.5;
+      transform: scale(.8);
+      transition: all 0.2s ease-in-out;
+    }
+
+    svg:hover {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    svg:active {
+      opacity: 0.7;
+      transform: scale(.9);
+    }
+  }
+
+  .resize-btn.active {
+    display: block;
+  }
+}
+
+.cases__info .covid-table-wrapper.fullscreen {
+  width: 100vw;
+  height: 100vh;
+
+  .popup-menu,
+  button,
+  td,
+  th {
+    font-size: 1.5rem;
+  }
+
+  td {
+    padding: 20px;
+  }
+
+  .popup-menu {
+    width: 320px;
+
+    .item {
+      padding: 20px;
+    }
+  }
+
+  .controls {
+    width: 100%;
+    height: 25%;
+  }
+
+  .covid-table {
+    width: 100%;
+    height: 50%;
+  }
+
+  .resize-btn svg {
+    width: 35px;
+    height: 35px;
+  }
 }
 
 .cases__info .covid-table {
@@ -15,7 +97,7 @@
     color: $text-color;
     text-align: center;
 
-    tr > td {
+    tr > th {
       font-size: 18px;
       font-weight: 500;
     }
@@ -37,6 +119,7 @@
 
   [data-status] {
     text-align: center;
+    font-size: 14px;
   }
 
   [data-status="confirmed"] {
