@@ -57,40 +57,14 @@
          <input class="map-radio" id="fatality" name="map" type="radio">
          <input class="map-radio" id="testing" name="map" type="radio">
 
-         <!-- Maps -->
-         <article class="maps__map" id="comulative-cases">
-            Comulative Cases
-            <div class="spinner-border" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </article>
-         <article class="maps__map" id="active-cases">
-            Active Cases
-            <div class="spinner-border" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </article>
-         <article class="maps__map" id="incidence-rate">
-            Incidence Rate
-            <div class="spinner-border" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </article>
-         <article class="maps__map" id="fatality-ratio">
-            Case-Fatality Ratio
-            <div class="spinner-border" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </article>
-         <article class="maps__map" id="testing-rate">
-            Testing Rate
-            <div class="spinner-border" role="status">
-               <span class="sr-only">Loading...</span>
-            </div>
-         </article>
+         <div id="map" class="map"></div>
 
+         <!-- <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+         </div> -->
+         
          <!-- Tabs -->
-         <div class="maps__tabs">
+         <div class="map__tabs">
             <label class="tabs__tab" id="comulative-tab" for="comulative">Comulative Cases</label>
             <label class="tabs__tab" id="active-tab" for="active">Active Cases</label>
             <label class="tabs__tab" id="incidence-tab" for="incidence">Incidence Rate</label>

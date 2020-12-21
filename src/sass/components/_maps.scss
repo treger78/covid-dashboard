@@ -1,24 +1,9 @@
-.dashboard__map {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.maps {
-  &__map {
-    display: none;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 93%;
-    border: 1px solid gray;
-  }
+.map {
+  width: 100%;
+  height: calc(100% - 35px);
   &__tabs {
     margin-left: 10px;
   }
-}
-
-.map {
   &-radio {
     display: none;
   }
@@ -46,13 +31,15 @@
   display: flex;
 }
 
-#comulative:checked ~ .maps__tabs #comulative-tab,
-#active:checked ~ .maps__tabs #active-tab,
-#incidence:checked ~ .maps__tabs #incidence-tab,
-#fatality:checked ~ .maps__tabs #fatality-tab,
-#testing:checked ~ .maps__tabs #testing-tab {
-  background-color: gray;
-  border-bottom: 3px solid blue;
+#comulative:checked ~ .map__tabs #comulative-tab,
+#active:checked ~ .map__tabs #active-tab,
+#incidence:checked ~ .map__tabs #incidence-tab,
+#fatality:checked ~ .map__tabs #fatality-tab,
+#testing:checked ~ .map__tabs #testing-tab {
+  border: unset;
+  background-color: #081217;
+  color: #ffffff;
+  border-bottom: 3px solid red;
 }
 
 div.spinner-border {
