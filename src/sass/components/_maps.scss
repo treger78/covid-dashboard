@@ -1,4 +1,5 @@
 .map {
+  position: relative;
   width: 100%;
   height: calc(100% - 35px);
   &__tabs {
@@ -23,14 +24,6 @@
   }
 }
 
-#comulative:checked ~ #comulative-cases,
-#active:checked ~ #active-cases,
-#incidence:checked ~ #incidence-rate,
-#fatality:checked ~ #fatality-ratio,
-#testing:checked ~ #testing-rate {
-  display: flex;
-}
-
 #comulative:checked ~ .map__tabs #comulative-tab,
 #active:checked ~ .map__tabs #active-tab,
 #incidence:checked ~ .map__tabs #incidence-tab,
@@ -45,4 +38,93 @@
 div.spinner-border {
   width: 3rem;
   height: 3rem;
+}
+
+#comulative:checked ~ #map .comulative-cases-icon,
+#active:checked ~ #map .active-cases-icon,
+#incidence:checked ~ #map .incidence-rate-icon,
+#fatality:checked ~ #map .fatality-ratio-icon,
+#testing:checked ~ #map .testing-rate-icon {
+  display: inline-block;
+}
+
+#legend, #continents {
+  display: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+.bookmark {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  z-index: 3;
+  background: rgb(43, 42, 42);
+  color: #ffffff;
+  max-height: 250px;
+  min-width: 150px;
+}
+
+.legend {
+  &-content {
+    padding: 6px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__item {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    span {
+      margin-right: 10px;
+    }
+  }
+}
+
+.continents {
+  padding: 2px;
+}
+.continent {
+  margin: 3px 5px;
+  cursor: pointer;
+  &:hover {
+    background: #888;
+  }
+}
+
+#continents:checked ~ .map .continents,
+#legend:checked ~ .map .legend-content {
+  display: block;
+}
+
+#comulative:checked ~ .map .circle {
+  background: #ff0000;
+}
+#active:checked ~ .map .circle {
+  background: #e38b4f;
+}
+#incidence:checked ~ .map .circle {
+  background:   #ffff00;
+}
+#fatality:checked ~ .map .circle {
+  background: #ffffff;
 }
