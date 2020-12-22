@@ -18,6 +18,7 @@ module.exports = {
         js: 'never',
       },
     ],
+    'no-param-reassign': 0,
   },
   settings: {
     'import/resolver': {
