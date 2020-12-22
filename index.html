@@ -25,8 +25,25 @@
 
       <!-- You can change it by your discretion -->
       <section class="dashboard__general-info">
-         <aside class="general-info__global"></aside>
-         <aside class="general-info__by-country"></aside>
+         <aside class="general-info__global">
+            <h3>Global Cases</h3>
+            <p class="general-info__global__cases"></p>
+         </aside>
+         <aside class="general-info__by-country">
+            <h4>Country cases by</h4>
+            <div class="per__time">
+               <button class="total__cases__btn active">Total cases</button><span> /</span>
+               <button class="new__cases__btn">New cases</button>
+            </div>
+            <input class="min__max__sort__btn" id="min__max__sort__btn" type="checkbox" autocomplete="off">
+            <label for="min__max__sort__btn"></label>
+            <div class="table__cases__by__country">
+            </div>
+            <div class="per__amount">
+               <button class="abs__cases__btn active">Absolute values</button><span> /</span>
+               <button class="per__population__btn">Per 100K population</button>
+            </div>
+         </aside>
       </section>
 
       <!-- You can change it by your discretion -->
