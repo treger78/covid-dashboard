@@ -1,7 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Covid-dashboard</title>
@@ -55,10 +52,51 @@
 
          <!-- You can change it by your discretion -->
          <article class="cases__info">
-            <!-- cases, deaths, recovered ... -->
-            <aside class="cases__covid"></aside>
-            <aside class="cases__deaths"></aside>
-            <aside class="cases__recovered"></aside>
+           <div class="covid-table-wrapper">
+             <div class="controls top">
+               <button type="button" class="arrow left">&vltri;</button>
+               <button type="button" class="select-btn">Total cases</button>
+               <button type="button" class="arrow right">&vrtri;</button>
+
+               <div class="popup-menu">
+                 <div class="item">Total cases</div>
+                 <div class="item">New cases</div>
+               </div>
+             </div>
+
+             <table class="covid-table">
+               <thead class="covid-table-caption">
+                 <tr>
+                   <th colspan="2">Global</th>
+                 </tr>
+               </thead>
+               <tbody>
+                 <tr>
+                   <td>Confirmed</td>
+                   <td data-status="confirmed"></td>
+                 </tr>
+                 <tr>
+                   <td>Recovered</td>
+                   <td data-status="recovered"></td>
+                 </tr>
+                 <tr>
+                   <td>Deaths</td>
+                   <td data-status="deaths"></td>
+                 </tr>
+               </tbody>
+             </table>
+
+             <div class="controls bottom">
+               <button type="button" class="arrow left">&vltri;</button>
+               <button type="button" class="select-btn">Absolute values</button>
+               <button type="button" class="arrow right">&vrtri;</button>
+
+               <div class="popup-menu">
+                 <div class="item">Absolute values</div>
+                 <div class="item">Per 100K population</div>
+               </div>
+             </div>
+           </div>
          </article>
 
          <!-- You can change it by your discretion -->
