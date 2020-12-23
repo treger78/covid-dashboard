@@ -198,7 +198,6 @@ function selectCasesView() {
 }
 
 selectCasesView();
-/*
+
 export const listInit = (data) => data;
 export const listConvert = (data) => data;
-*/
