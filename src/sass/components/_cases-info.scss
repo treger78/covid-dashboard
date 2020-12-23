@@ -1,0 +1,235 @@
+.cases__info .covid-table-wrapper {
+  position: relative;
+  width: 100%;
+
+  .resize-btn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background: none;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    z-index: 5;
+    display: none;
+
+    svg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background-color: #606060;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid #bdbdbd;
+      box-shadow: 0 0 10px 2px #000;
+      padding: 2px;
+      fill: #bdbdbd;
+      opacity: 0.5;
+      transform: scale(.8);
+      transition: all 0.2s ease-in-out;
+    }
+
+    svg:hover {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    svg:active {
+      opacity: 0.7;
+      transform: scale(.9);
+    }
+  }
+
+  .resize-btn.active {
+    display: block;
+  }
+}
+
+.cases__info .covid-table-wrapper.fullscreen {
+  width: 100vw;
+  height: 100vh;
+
+  .popup-menu,
+  button,
+  td,
+  th {
+    font-size: 1.5rem;
+  }
+
+  td {
+    padding: 20px;
+  }
+
+  .popup-menu {
+    width: 320px;
+
+    .item {
+      padding: 20px;
+    }
+  }
+
+  .controls {
+    width: 100%;
+    height: 25%;
+  }
+
+  .covid-table {
+    width: 100%;
+    height: 50%;
+  }
+
+  .resize-btn svg {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+.cases__info .covid-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: $primary-color;
+  color: $border-color;
+  cursor: default;
+  overflow-y: auto;
+
+  &-caption {
+    color: $text-color;
+    text-align: center;
+
+    tr > th {
+      font-size: 18px;
+      font-weight: 500;
+    }
+  }
+
+  td {
+    padding: 7px;
+    border: 1px solid $border-color;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4rem;
+  }
+
+  tr {
+    &:hover {
+      background-color: $hover-color;
+    }
+  }
+
+  [data-status] {
+    text-align: center;
+    font-size: 14px;
+  }
+
+  [data-status="confirmed"] {
+    color: $text-color;
+  }
+
+  [data-status="recovered"] {
+    color: $text-color-recovered;
+  }
+
+  [data-status="deaths"] {
+    color: $text-color-deaths;
+  }
+}
+
+.cases__info .controls {
+  position: relative;
+  width: 100%;
+  height: 50px;
+  background: $primary-color;
+  border: 1px solid $border-color;
+
+  button {
+    position: absolute;
+    align-items: center;
+    color: $text-color;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+    z-index: 1;
+  }
+
+  .arrow {
+    top: 50%;
+    transform: translateY(-50%);
+    color: $border-color;
+    font-size: 16px;
+    z-index: 2;
+
+    &.left {
+      left: 10px;
+    }
+
+    &.right {
+      right: 10px;
+    }
+
+    &:hover {
+      color: $text-color;
+    }
+
+    &:active {
+      color: $border-color;
+    }
+  }
+
+  .select-btn {
+    width: 70%;
+    padding: 5px;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid $border-color;
+    border-radius: 3px;
+
+    &:hover {
+      background: $hover-color;
+    }
+  }
+}
+
+.popup-menu {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  width: 180px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2;
+  background: $primary-color;
+  box-shadow: 0 0 5px 2px #111;
+  transition: all 0.2s ease-in-out;
+  z-index: 100;
+
+  &.active {
+    transform: translate(-50%, -50%) scale(1);
+  }
+
+  .item {
+    padding: 5px;
+    border: 1px solid $border-color;
+    text-align: center;
+    color: $border-color;
+    fonr-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      background: $hover-color;
+      color: $text-color;
+    }
+  }
+}
+@media (max-width: 900px) {
+  .select-btn {
+    // display: none;
+  }
+}
