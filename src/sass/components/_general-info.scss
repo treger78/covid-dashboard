@@ -1,0 +1,83 @@
+.dashboard__general-info {
+	width: 17%;
+	position: relative;
+	color: #cbcbcb;
+}
+
+.general-info__global {
+	text-align: center;
+}
+
+.general-info__global__cases {
+	font-size: 2rem;
+}
+
+.table__cases__by__country {
+	max-height: 50vh;
+	overflow-y: auto;
+}
+
+.general-info__global, .general-info__by-country {
+	background-color: #1c1c1c;
+	margin-top: 0.3rem;
+	margin-bottom: 0.3rem;
+}
+
+.general-info__by-country h4, .per__time, .per__amount {
+	text-align: center;
+}
+
+.per__time button, .per__amount button {
+	background: none;
+	color: #cbcbcb;
+}
+
+.total__cases__btn, .new__cases__btn, .abs__cases__btn, .per__population__btn {
+	cursor: pointer;
+}
+
+.per__time .active, .per__amount .active {
+	color: orange;
+}
+
+.min__max__sort__btn {
+	appearance: none;
+}
+
+#min__max__sort__btn {
+	background-image: url(../assets/sort-button-icon.png);
+	cursor: pointer;
+	background-size: contain;
+	background-repeat: no-repeat;
+	filter: brightness(3.5);
+	width: 15px;
+	height: 15px;
+}
+
+.table__tr {
+	border: 1px solid grey;
+	background-color: #1d1e22;
+	padding-left: 1rem;
+}
+
+.county__flag img {
+	max-width: 15px;
+	max-height: 15px;
+}
+
+.general-info__global__cases, .county__cases {
+	color: #e60000;	
+}
+
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+	.dashboard__general-info {
+		width: 45%;
+	}	
+}
+
+@media screen and (max-width: 768px) {
+	.dashboard__general-info {
+		width: 100%;
+		margin: auto;
+	}
+}
