@@ -32,9 +32,19 @@ export function totalConfirmedGeoData(geoJson) {
   const geoData = new L.GeoJSON(geoJson, {
     pointToLayer: (feature, latlng) => {
       const { properties } = feature;
-      const { TotalConfirmed } = properties;
+      const { TotalConfirmed, TotalDeaths } = properties;
       const radius = radiusHandler(TotalConfirmed);
-      const html = create('span', `icon-circle comulative-cases-icon circle-${radius}`, null, null);
+      const html = create(
+        'span',
+        `icon-circle comulative-cases-icon circle-${radius}`,
+        `<span class="icon-marker-tooltip">
+          <img src=${properties.flag} class="flag">
+          <h2>${properties.Country}</h2>
+          <p class="confirmed">Confirmed: ${TotalConfirmed}</p>
+          <p class="deaths">Deaths: ${TotalDeaths}</p>
+        </span>`,
+        null,
+      );
       return L.marker(latlng, {
         icon: L.divIcon({
           className: 'icon-marker',
@@ -53,7 +63,19 @@ export function totalActiveGeoData(geoJson) {
       const { properties } = feature;
       const { TotalConfirmed, TotalRecovered, TotalDeaths } = properties;
       const radius = radiusHandler(TotalConfirmed - TotalRecovered - TotalDeaths);
-      const html = create('span', `icon-circle active-cases-icon circle-${radius}`, null, null);
+      const html = create(
+        'span',
+        `icon-circle active-cases-icon circle-${radius}`,
+        `<span class="icon-marker-tooltip">
+          <img src=${properties.flag} class="flag">
+          <h2>${properties.Country}</h2>
+          <p class="confirmed">Confirmed: ${TotalConfirmed}</p>
+          <p class="deaths">Deaths: ${TotalDeaths}</p>
+          <p class="recovered">Recovered: ${TotalRecovered}</p>
+          <p class="active">Active: ${TotalConfirmed - TotalRecovered - TotalDeaths}</p>
+        </span>`,
+        null,
+      );
       return L.marker(latlng, {
         icon: L.divIcon({
           className: 'icon-marker',
@@ -70,9 +92,18 @@ export function totalDeathsGeoData(geoJson) {
   const geoData = new L.GeoJSON(geoJson, {
     pointToLayer: (feature, latlng) => {
       const { properties } = feature;
-      const { TotalDeaths } = properties;
+      const { TotalDeaths, TotalConfirmed } = properties;
       const radius = radiusHandler(TotalDeaths);
-      const html = create('span', `icon-circle fatality-ratio-icon circle-${radius}`, null, null);
+      const html = create(
+        'span',
+        `icon-circle fatality-ratio-icon circle-${radius}`,
+        `<span class="icon-marker-tooltip">
+          <img src=${properties.flag} class="flag">
+          <h2>${properties.Country}</h2>
+          <p>Case-Fatality Ratio: ${(TotalDeaths / TotalConfirmed).toFixed(2) * 100}%</p>
+        </span>`,
+        null,
+      );
       return L.marker(latlng, {
         icon: L.divIcon({
           className: 'icon-marker',
@@ -92,7 +123,7 @@ export function IncidenceRateGeoData(geoJson) {
       const { TotalConfirmed, population } = properties;
       const populationCoef = population / 100000;
       let radius;
-      const incidenceRate = TotalConfirmed / populationCoef; // incidence rate per 100,000 people
+      const incidenceRate = (TotalConfirmed / populationCoef).toFixed(2);
       if (incidenceRate > 30000) radius = 12;
       else if (incidenceRate > 10000) radius = 10;
       else if (incidenceRate > 5000) radius = 8;
@@ -101,7 +132,16 @@ export function IncidenceRateGeoData(geoJson) {
       else if (incidenceRate > 750) radius = 4;
       else if (incidenceRate > 250) radius = 3;
       else radius = 2;
-      const html = create('span', `icon-circle incidence-rate-icon circle-${radius}`, null, null);
+      const html = create(
+        'span',
+        `icon-circle incidence-rate-icon circle-${radius}`,
+        `<span class="icon-marker-tooltip">
+          <img src=${properties.flag} class="flag">
+          <h2>${properties.Country}</h2>
+          <p>Incidence Rate: ${incidenceRate} per 100,000 people</p>
+        </span>`,
+        null,
+      );
       return L.marker(latlng, {
         icon: L.divIcon({
           className: 'icon-marker',

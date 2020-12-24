@@ -3,10 +3,10 @@ import countries from '../layouts/countries';
 import * as geoData from './geoJsonLayers';
 
 const map = new L.Map('map', { center: [40, 20], zoom: 2 });
-const layer = new L.TileLayer(
+const tileLayer = new L.TileLayer(
   'https://api.mapbox.com/styles/v1/abdulloh76/ckiuab9eh2phd19qk49l16mvl/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoiYWJkdWxsb2g3NiIsImEiOiJja2l1YTV6Z3EwOWdhMnpuenE3N3gxOHhjIn0.txVoKFibwsl1bMD2ylfxOA',
 );
-map.addLayer(layer);
+map.addLayer(tileLayer);
 
 export function mapInit(data, countryAdditionalInfo) {
   data.Countries.forEach((country) => {
@@ -15,6 +15,7 @@ export function mapInit(data, countryAdditionalInfo) {
     );
     country.population = additionalInfo.population;
     country.flag = additionalInfo.flag;
+    country.alpha3 = countries[country.CountryCode].alpha3;
   });
 
   const geoJson = {
@@ -44,7 +45,7 @@ export function mapInit(data, countryAdditionalInfo) {
   totalDeathsGeoData.addTo(map);
 
   const IncidenceRateGeoData = geoData.IncidenceRateGeoData(geoJson);
-  IncidenceRateGeoData.addTo(map)
+  IncidenceRateGeoData.addTo(map);
 }
 
 export const mapConvert = (data) => data;
