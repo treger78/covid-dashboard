@@ -43,12 +43,19 @@ div.spinner-border {
 #comulative:checked ~ #map .comulative-cases-icon,
 #active:checked ~ #map .active-cases-icon,
 #incidence:checked ~ #map .incidence-rate-icon,
-#fatality:checked ~ #map .fatality-ratio-icon,
-#testing:checked ~ #map .testing-rate-icon {
+#fatality:checked ~ #map .fatality-ratio-icon {
   display: inline-block;
 }
+#fatality:checked ~ #map .legend__item {
+  &:first-child,
+  &:nth-child(2),
+  &:nth-child(3) {
+    display: none;
+  }
+}
 
-#legend, #continents {
+#legend,
+#continents {
   display: none;
 }
 /* width */
@@ -58,17 +65,17 @@ div.spinner-border {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
+  background: #f1f1f1;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 .bookmark {
@@ -123,8 +130,18 @@ div.spinner-border {
   background: #e38b4f;
 }
 #incidence:checked ~ .map .circle {
-  background:   #ffff00;
+  background: #ffff00;
 }
 #fatality:checked ~ .map .circle {
   background: #ffffff;
+}
+
+.icon-incidence {
+  display: none;
+}
+#incidence:checked ~ #map .legend__item {
+  display: none;
+}
+#incidence:checked ~ #map .icon-incidence {
+  display: block;
 }
