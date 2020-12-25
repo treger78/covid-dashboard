@@ -15,9 +15,10 @@
     margin: 0;
     font-size: 14px;
     padding: 5px;
-    border-left: 1px solid gray;
-    border-right: 1px solid gray;
-    border-bottom: 3px solid gray;
+    border-left: 1px solid #888888;
+    border-right: 1px solid #888888;
+    border-bottom: 3px solid #888888;
+    color: #888888;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     cursor: pointer;
@@ -150,6 +151,7 @@ div.spinner-border {
   h2 {
     display: inline-block;
     font-size: 16px;
+    font-weight: 600;
     margin: 0;
   }
   &-tooltip {
@@ -165,6 +167,7 @@ div.spinner-border {
     background-color: #1a1a1a;
     color: #808080;
     p {
+      font-weight: 600;
       margin: 0;
     }
   }

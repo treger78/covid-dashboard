@@ -1,6 +1,7 @@
 import L from 'leaflet';
 import countries from '../layouts/countries';
 import * as geoData from './geoJsonLayers';
+import ResizeButton from '../utils/resize-button';
 
 const map = new L.Map('map', { center: [40, 20], zoom: 2 });
 const tileLayer = new L.TileLayer(
@@ -9,6 +10,8 @@ const tileLayer = new L.TileLayer(
 map.addLayer(tileLayer);
 
 export function mapInit(data, countryAdditionalInfo) {
+  // eslint-disable-next-line no-unused-vars
+  const resizeButton = new ResizeButton(document.querySelector('#map'))
   data.Countries.forEach((country) => {
     const additionalInfo = countryAdditionalInfo.find(
       (el) => el.alpha2Code === country.CountryCode,

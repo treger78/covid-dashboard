@@ -1,20 +1,24 @@
 .dashboard {
-    display: flex;
-    justify-content: space-between;
-    height: 500px;
+  display: flex;
+  justify-content: space-between;
+  height: 92%;
+  
+  & > * {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15),
+    0 10px 20px rgba(0, 0, 0, 0.4);;
+  }
 
-    &__general-info {
-        flex-basis: 17%;
-        background-color: red;
-    }
+  &__general-info {
+    flex-basis: 17%;
+  }
 
-    &__maps {
-        flex-basis: 55%;
-        background-color: yellow;
-    }
+  &__map {
+    flex-basis: 55%;
+  }
 
-    &__cases {
-        flex-basis: 27%;
-        background-color: green;
-    }
+  &__cases {
+    flex-basis: 27%;
+  }
 }
