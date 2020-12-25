@@ -98,7 +98,7 @@
   height: 25px;
   width: 25px;
   position: absolute;
-  z-index: 5;
+  z-index: 1000;
   top: 5px;
   &:active {
     transform: translateY(2px);
