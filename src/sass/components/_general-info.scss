@@ -1,7 +1,9 @@
-.dashboard__general-info {
-	width: 17%;
-	position: relative;
-	color: #cbcbcb;
+.dashboard__general-info.fullscreen {
+	width: 100vw;
+	height: 100vh;
+	.table__cases__by__country {
+    	max-height: 78vh;
+	}
 }
 
 .general-info__global {
@@ -23,20 +25,21 @@
 	margin-bottom: 0.3rem;
 }
 
-.general-info__by-country h4, .per__time, .per__amount {
+.general-info__by-country h4, .per__time, .per__amount, .per__type {
 	text-align: center;
 }
 
-.per__time button, .per__amount button {
+.per__time button, .per__amount button, .per__type button {
 	background: none;
 	color: #cbcbcb;
 }
 
-.total__cases__btn, .new__cases__btn, .abs__cases__btn, .per__population__btn {
+.total__cases__btn, .new__cases__btn, .abs__cases__btn, .per__population__btn, .confirmed__btn, 
+.recovered__btn, .deaths__btn {
 	cursor: pointer;
 }
 
-.per__time .active, .per__amount .active {
+.per__time .active, .per__amount .active, .per__type .active {
 	color: orange;
 }
 
@@ -63,21 +66,4 @@
 .county__flag img {
 	max-width: 15px;
 	max-height: 15px;
-}
-
-.general-info__global__cases, .county__cases {
-	color: #e60000;	
-}
-
-@media screen and (min-width: 768px) and (max-width: 1280px) {
-	.dashboard__general-info {
-		width: 45%;
-	}	
-}
-
-@media screen and (max-width: 768px) {
-	.dashboard__general-info {
-		width: 100%;
-		margin: auto;
-	}
 }
