@@ -12,13 +12,23 @@
 
   &__general-info {
     flex-basis: 17%;
+    position: relative;
+    color: #cbcbcb;
   }
 
   &__map {
     flex-basis: 55%;
   }
 
-  &__cases {
-    flex-basis: 27%;
+@media screen and (min-width: 768px) and (max-width: 1280px) {
+  .dashboard__general-info {
+    width: 49%;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .dashboard__general-info {
+    width: 100%;
+  }
+}
+

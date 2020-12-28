@@ -1,49 +1,6 @@
 .cases__info .covid-table-wrapper {
   position: relative;
   width: 100%;
-
-  .resize-btn {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background: none;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    z-index: 5;
-    display: none;
-
-    svg {
-      position: absolute;
-      top: 0;
-      right: 0;
-      background-color: #606060;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      border: 1px solid #bdbdbd;
-      box-shadow: 0 0 10px 2px #000;
-      padding: 2px;
-      fill: #bdbdbd;
-      opacity: 0.5;
-      transform: scale(.8);
-      transition: all 0.2s ease-in-out;
-    }
-
-    svg:hover {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    svg:active {
-      opacity: 0.7;
-      transform: scale(.9);
-    }
-  }
-
-  .resize-btn.active {
-    display: block;
-  }
 }
 
 .cases__info .covid-table-wrapper.fullscreen {
@@ -218,7 +175,7 @@
     border: 1px solid $border-color;
     text-align: center;
     color: $border-color;
-    fonr-weight: 500;
+    font-weight: 500;
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 

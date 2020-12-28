@@ -17,6 +17,18 @@ var countriesFlagsByCode = {};
 var countriesPopulationsByCode = {};
 var countriesAllConfirmedPerPopulation = {};
 var countriesNewConfirmedPerPopulation = {};
+var countriesAllDeaths = {};
+var countriesNewDeaths = {};
+var countriesAllRecovered = {};
+var countriesNewRecovered = {};
+var countriesAllDeathsByCode = {};
+var countriesNewDeathsByCode = {};
+var countriesAllRecoveredByCode = {};
+var countriesNewRecoveredByCode = {};
+var countriesAllDeathsPerPopulation = {};
+var countriesNewDeathsPerPopulation = {};
+var countriesAllRecoveredPerPopulation = {};
+var countriesNewRecoveredPerPopulation = {};
 
 function sortByCases(casesObj, increaseOrDecrease) {
 	let sortedObj = {};
@@ -89,7 +101,15 @@ async function getConfirmedData() {
 	  	countriesAllConfirmed[country.Country] = country.TotalConfirmed;
 	  	countriesNewConfirmed[country.Country] = country.NewConfirmed;
 	  	countriesAllConfirmedByCode[country.CountryCode] = country.TotalConfirmed;
-	  	countriesNewConfirmedByCode[country.CountryCode] = country.NewConfirmed;	  	
+	  	countriesNewConfirmedByCode[country.CountryCode] = country.NewConfirmed;
+		countriesAllDeaths[country.Country] = country.TotalDeaths;
+		countriesNewDeaths[country.Country] = country.NewDeaths;
+		countriesAllRecovered[country.Country] = country.TotalRecovered;
+		countriesNewRecovered[country.Country] = country.NewRecovered;
+		countriesAllDeathsByCode[country.CountryCode] = country.TotalDeaths;
+		countriesNewDeathsByCode[country.CountryCode] = country.NewDeaths;
+		countriesAllRecoveredByCode[country.CountryCode] = country.TotalRecovered;
+		countriesNewRecoveredByCode[country.CountryCode] = country.NewRecovered;
 	  }));
 
 	//получаем флаги и популяцию для каждой страны
@@ -104,7 +124,10 @@ async function getConfirmedData() {
 
 	countriesAllConfirmedPerPopulation = calcPerPopulation(countriesAllConfirmed, countriesAllConfirmedByCode);
 	countriesNewConfirmedPerPopulation = calcPerPopulation(countriesNewConfirmed, countriesNewConfirmedByCode);
-
+	countriesAllDeathsPerPopulation = calcPerPopulation(countriesAllDeaths, countriesAllDeathsByCode);
+	countriesNewDeathsPerPopulation = calcPerPopulation(countriesNewDeaths, countriesNewDeathsByCode);
+	countriesAllRecoveredPerPopulation = calcPerPopulation(countriesAllRecovered, countriesAllRecoveredByCode);
+	countriesNewRecoveredPerPopulation = calcPerPopulation(countriesNewRecovered, countriesNewRecoveredByCode);
 	//т. к. кол-во случаев заражения и флаги получаются с разных api, некоторые ключи отлючаются
 	//здесь мы добавляем в объект countriesFlags ключ, совпадающий с ключом из другого api
 	for (let i in countriesAllConfirmed) {
@@ -152,46 +175,164 @@ extendSection();
 
 function selectCasesView() {
 
-	function changeCasesView(clickedBtn, oldViewBtn, casesViewType) {
-		if (!clickedBtn.classList.contains('active')) {
-			clickedBtn.classList.add('active');
-			oldViewBtn.classList.remove('active');			
-			clearTable();
-			insertConfirmedData(casesViewType);
-		}
-	}
-
 	const totalCasesBtn = document.querySelector('.total__cases__btn');
 	const newCasesBtn = document.querySelector('.new__cases__btn');
 	const absCasesBtn = document.querySelector('.abs__cases__btn');
 	const populationCasesBtn = document.querySelector('.per__population__btn');
 
+	const confirmedCasesBtn = document.querySelector('.confirmed__btn');
+	const recoveredCasesBtn = document.querySelector('.recovered__btn');
+	const deathsCasesBtn = document.querySelector('.deaths__btn');
+
+	const covidGlobalCases = document.querySelector('.general-info__global__cases');
+	const tableCasesByCountry = document.querySelector('.table__cases__by__country');
+
+	function changeGlobalCases(casesViewType) {
+		const covidGlobalCases = document.querySelector('.general-info__global__cases');
+		let sum = 0;
+		for (let i in casesViewType) {
+			sum += casesViewType[i];
+		}
+		covidGlobalCases.innerHTML = sum;
+	}
+
+	function currentCasesViewStyle() {
+		if (confirmedCasesBtn.classList.contains('active')) {
+			covidGlobalCases.style.color = '#cbcbcb';
+			let countryCases = document.querySelectorAll('.county__cases').forEach((countryCase) => {
+				countryCase.style.color = '#cbcbcb';
+			});
+		} else if (recoveredCasesBtn.classList.contains('active')) {
+			covidGlobalCases.style.color = 'green';
+			let countryCases = document.querySelectorAll('.county__cases').forEach((countryCase) => {
+				countryCase.style.color = 'green';
+			});
+		} else {
+			covidGlobalCases.style.color = '#e60000';
+			let countryCases = document.querySelectorAll('.county__cases').forEach((countryCase) => {
+				countryCase.style.color = '#e60000';
+			});
+		}
+	}
+
+	currentCasesViewStyle();	
+
+	function changeCasesView(confirmedObj) {
+		clearTable();
+		insertConfirmedData(confirmedObj);
+		currentCasesViewStyle();
+		changeGlobalCases(confirmedObj);
+	}
+
+	function selectCaseTypeView(btnIsActive, confirmed, recovered, deaths, elseConfirmed, elseRecovered, elseDeaths) {
+		if (btnIsActive.classList.contains('active')) {
+			if (confirmedCasesBtn.classList.contains('active')) {
+				changeCasesView(confirmed);
+			}
+			if (recoveredCasesBtn.classList.contains('active')) {
+				changeCasesView(recovered);
+			}
+			if (deathsCasesBtn.classList.contains('active')) {
+				changeCasesView(deaths);
+			}
+		} else {
+			if (confirmedCasesBtn.classList.contains('active')) {
+				changeCasesView(elseConfirmed);
+			}
+			if (recoveredCasesBtn.classList.contains('active')) {
+				changeCasesView(elseRecovered);
+			}
+			if (deathsCasesBtn.classList.contains('active')) {
+				changeCasesView(elseDeaths);
+			}
+		}
+	}
+
+	function addAndRemoveActiveStyle(addBtn, removeBtn) {
+		addBtn.classList.add('active');
+		removeBtn.classList.remove('active');		
+	}
+
 	totalCasesBtn.addEventListener('click', function() {
-		if (absCasesBtn.classList.contains('active')) {
-			changeCasesView(totalCasesBtn, newCasesBtn, countriesAllConfirmed);
-		} else {
-			changeCasesView(totalCasesBtn, newCasesBtn, countriesAllConfirmedPerPopulation);
+		if (!totalCasesBtn.classList.contains('active')) {
+			addAndRemoveActiveStyle(totalCasesBtn, newCasesBtn);
+			selectCaseTypeView(absCasesBtn, countriesAllConfirmed, countriesAllRecovered, countriesAllDeaths, 
+				countriesAllConfirmedPerPopulation, countriesAllRecoveredPerPopulation, countriesAllDeathsPerPopulation);
 		}
 	});
+
 	newCasesBtn.addEventListener('click', function() {
-		if (absCasesBtn.classList.contains('active')) {
-			changeCasesView(newCasesBtn, totalCasesBtn, countriesNewConfirmed);
-		} else {
-			changeCasesView(newCasesBtn, totalCasesBtn, countriesNewConfirmedPerPopulation);
+		if (!newCasesBtn.classList.contains('active')) {
+			addAndRemoveActiveStyle(newCasesBtn, totalCasesBtn);
+			selectCaseTypeView(absCasesBtn, countriesNewConfirmed, countriesNewRecovered, countriesNewDeaths, 
+				countriesNewConfirmedPerPopulation, countriesNewRecoveredPerPopulation, countriesNewDeathsPerPopulation);
 		}
 	});
+
 	absCasesBtn.addEventListener('click', function() {
-		if (totalCasesBtn.classList.contains('active')) {
-			changeCasesView(absCasesBtn, populationCasesBtn, countriesAllConfirmed);		
-		} else {
-			changeCasesView(absCasesBtn, populationCasesBtn, countriesNewConfirmed);
+		if (!absCasesBtn.classList.contains('active')) {
+			addAndRemoveActiveStyle(absCasesBtn, populationCasesBtn);
+			selectCaseTypeView(totalCasesBtn, countriesAllConfirmed, countriesAllRecovered, countriesAllDeaths, 
+				countriesNewConfirmed, countriesNewRecovered, countriesNewDeaths);
 		}
 	});
+
 	populationCasesBtn.addEventListener('click', function() {
+		if (!populationCasesBtn.classList.contains('active')) {
+			addAndRemoveActiveStyle(populationCasesBtn, absCasesBtn);
+			selectCaseTypeView(totalCasesBtn, countriesAllConfirmedPerPopulation, countriesAllRecoveredPerPopulation, 
+				countriesAllDeathsPerPopulation, countriesNewConfirmedPerPopulation, countriesNewRecoveredPerPopulation, 
+				countriesNewDeathsPerPopulation);
+		}
+	});
+
+	function addActiveAndRemoveIfContainsActive(addBtn, removeBtn1, removeBtn2) {
+		addBtn.classList.add('active');
+		if (removeBtn1.classList.contains('active')) {
+			removeBtn1.classList.remove('active');
+		}
+		if (removeBtn2.classList.contains('active')) {
+			removeBtn2.classList.remove('active');
+		}
+	}
+
+	function changeViewIfActive(obj1, obj2, obj3, obj4) {
 		if (totalCasesBtn.classList.contains('active')) {
-			changeCasesView(populationCasesBtn, absCasesBtn, countriesAllConfirmedPerPopulation);
+			if (absCasesBtn.classList.contains('active')) {
+				changeCasesView(obj1);
+			} else {
+				changeCasesView(obj2);
+			}
 		} else {
-			changeCasesView(populationCasesBtn, absCasesBtn, countriesNewConfirmedPerPopulation);
+			if (absCasesBtn.classList.contains('active')) {
+				changeCasesView(obj3);
+			} else {
+				changeCasesView(obj4);
+			}
+		}
+	}
+
+	confirmedCasesBtn.addEventListener('click', function() {
+		if (!confirmedCasesBtn.classList.contains('active')) {
+			addActiveAndRemoveIfContainsActive(confirmedCasesBtn, recoveredCasesBtn, deathsCasesBtn);
+			changeViewIfActive(countriesAllConfirmed, countriesAllConfirmedPerPopulation, countriesNewConfirmed, 
+				countriesNewConfirmedPerPopulation);
+		}
+	});
+
+	recoveredCasesBtn.addEventListener('click', function() {
+		if (!recoveredCasesBtn.classList.contains('active')) {
+			addActiveAndRemoveIfContainsActive(recoveredCasesBtn, confirmedCasesBtn, deathsCasesBtn);
+			changeViewIfActive(countriesAllRecovered, countriesAllRecoveredPerPopulation, countriesNewRecovered, 
+				countriesNewRecoveredPerPopulation);
+		}
+	});
+
+	deathsCasesBtn.addEventListener('click', function() {
+		if (!deathsCasesBtn.classList.contains('active')) {
+			addActiveAndRemoveIfContainsActive(deathsCasesBtn, confirmedCasesBtn, recoveredCasesBtn);
+			changeViewIfActive(countriesAllDeaths, countriesAllDeathsPerPopulation, countriesNewDeaths, 
+				countriesNewDeathsPerPopulation);
 		}
 	});
 
