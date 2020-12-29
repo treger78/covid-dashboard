@@ -1,0 +1,69 @@
+.dashboard__general-info.fullscreen {
+	width: 100vw;
+	height: 100vh;
+	.table__cases__by__country {
+    	max-height: 78vh;
+	}
+}
+
+.general-info__global {
+	text-align: center;
+}
+
+.general-info__global__cases {
+	font-size: 2rem;
+}
+
+.table__cases__by__country {
+	max-height: 63vh;
+	overflow-y: auto;
+}
+
+.general-info__global, .general-info__by-country {
+	background-color: #1c1c1c;
+	margin-top: 0.3rem;
+	margin-bottom: 0.3rem;
+}
+
+.general-info__by-country h4, .per__time, .per__amount, .per__type {
+	text-align: center;
+}
+
+.per__time button, .per__amount button, .per__type button {
+	background: none;
+	color: #cbcbcb;
+}
+
+.total__cases__btn, .new__cases__btn, .abs__cases__btn, .per__population__btn, .confirmed__btn, 
+.recovered__btn, .deaths__btn {
+	cursor: pointer;
+}
+
+.per__time .active, .per__amount .active, .per__type .active {
+	color: orange;
+}
+
+.min__max__sort__btn {
+	appearance: none;
+}
+
+#min__max__sort__btn {
+	background-image: url(../assets/sort-button-icon.png);
+	cursor: pointer;
+	background-size: contain;
+	background-repeat: no-repeat;
+	filter: brightness(3.5);
+	width: 15px;
+	height: 15px;
+}
+
+.table__tr {
+	border: 1px solid grey;
+	background-color: #1d1e22;
+	padding-left: 1rem;
+}
+
+.county__flag img {
+	max-width: 15px;
+	max-height: 15px;
+}
