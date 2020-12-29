@@ -1,0 +1,38 @@
+footer {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.rs__logo__link {
+	margin-right: 1rem;
+	margin-left: 1rem;	
+}
+
+footer p {
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+footer p a {
+	color: orange;	
+}
+
+footer p a:hover {
+	opacity: 50%;	
+}
+
+footer img {
+	padding: 0.5rem;
+}
+
+.rs__school__logo {
+	height: auto;
+	max-width: 100%;
+	width: 3.8rem;
+}
+
+.rs__school__logo:hover {
+	cursor: pointer;
+	opacity: 30%;
+}

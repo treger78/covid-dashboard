@@ -1,47 +1,8 @@
-.cases__info .covid-table-wrapper {
+.cases__info .covid-table-wrapper {  
   position: relative;
-  width: 100%;
+  margin-top: 0.3rem;
+  margin-bottom: 0.3rem;  
 }
-
-.cases__info .covid-table-wrapper.fullscreen {
-  width: 100vw;
-  height: 100vh;
-
-  .popup-menu,
-  button,
-  td,
-  th {
-    font-size: 1.5rem;
-  }
-
-  td {
-    padding: 20px;
-  }
-
-  .popup-menu {
-    width: 320px;
-
-    .item {
-      padding: 20px;
-    }
-  }
-
-  .controls {
-    width: 100%;
-    height: 25%;
-  }
-
-  .covid-table {
-    width: 100%;
-    height: 50%;
-  }
-
-  .resize-btn svg {
-    width: 35px;
-    height: 35px;
-  }
-}
-
 .cases__info .covid-table {
   width: 100%;
   border-collapse: collapse;
@@ -94,7 +55,6 @@
 
 .cases__info .controls {
   position: relative;
-  width: 100%;
   height: 50px;
   background: $primary-color;
   border: 1px solid $border-color;
@@ -138,7 +98,6 @@
   }
 
   .select-btn {
-    width: 70%;
     padding: 5px;
     left: 50%;
     top: 50%;
@@ -185,8 +144,42 @@
     }
   }
 }
-@media (max-width: 900px) {
-  .select-btn {
-    // display: none;
+
+.cases__info .covid-table-wrapper.fullscreen {
+  width: 100vw;
+  height: 100vh;
+
+  .popup-menu,
+  button,
+  td,
+  th {
+    font-size: 1.5rem;
+  }
+
+  td {
+    padding: 20px;
+  }
+
+  .popup-menu {
+    width: 320px;
+
+    .item {
+      padding: 20px;
+    }
+  }
+
+  .controls {
+    width: 100%;
+    height: 25%;
+  }
+
+  .covid-table {
+    width: 100%;
+    height: 50%;
+  }
+
+  .resize-btn svg {
+    width: 35px;
+    height: 35px;
   }
 }
