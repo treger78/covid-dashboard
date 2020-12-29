@@ -10,6 +10,10 @@ fetch('https://api.covid19api.com/summary')
     console.log(data);
     table.tableInit(data);
     list.listInit(data);
-    map.mapInit(data);
+    fetch('https://restcountries.eu/rest/v2/all?fields=name;alpha2Code;population;flag')
+      .then((resp) => resp.json())
+      .then((countryAdditionalInfo) => {
+        map.mapInit(data, countryAdditionalInfo);
+      })
     diagram.diagramInit(data);
   });

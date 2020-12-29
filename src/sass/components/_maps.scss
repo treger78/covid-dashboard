@@ -1,0 +1,194 @@
+.map {
+  position: relative;
+  width: 100%;
+  height: calc(100% - 35px);
+  &__tabs {
+    margin-left: 10px;
+  }
+  &-radio {
+    display: none;
+  }
+}
+
+.tabs {
+  &__tab {
+    margin: 0;
+    font-size: 14px;
+    padding: 5px;
+    border-left: 1px solid #888888;
+    border-right: 1px solid #888888;
+    border-bottom: 3px solid #888888;
+    color: #888888;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    cursor: pointer;
+  }
+}
+
+#comulative:checked ~ .map__tabs #comulative-tab,
+#active:checked ~ .map__tabs #active-tab,
+#incidence:checked ~ .map__tabs #incidence-tab,
+#fatality:checked ~ .map__tabs #fatality-tab,
+#testing:checked ~ .map__tabs #testing-tab {
+  border: unset;
+  background-color: #081217;
+  color: #ffffff;
+  border-bottom: 3px solid red;
+}
+
+div.spinner-border {
+  width: 3rem;
+  height: 3rem;
+}
+
+#comulative:checked ~ #map .comulative-cases-icon,
+#active:checked ~ #map .active-cases-icon,
+#incidence:checked ~ #map .incidence-rate-icon,
+#fatality:checked ~ #map .fatality-ratio-icon {
+  display: inline-block;
+}
+#fatality:checked ~ #map .legend__item {
+  &:first-child,
+  &:nth-child(2),
+  &:nth-child(3) {
+    display: none;
+  }
+}
+
+#legend,
+#continents {
+  display: none;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.bookmark {
+  display: none;
+  position: absolute;
+  top: 35px;
+  right: 10px;
+  z-index: 1000;
+  background: rgb(43, 42, 42);
+  color: #ffffff;
+  max-height: 250px;
+  min-width: 150px;
+}
+
+.legend {
+  &-content {
+    padding: 6px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+  }
+  &__item {
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: baseline;
+    span {
+      margin-right: 10px;
+    }
+  }
+}
+
+.continents {
+  padding: 2px;
+}
+.continent {
+  margin: 3px 5px;
+  cursor: pointer;
+  &:hover {
+    background: #888;
+  }
+}
+
+#continents:checked ~ .map .continents,
+#legend:checked ~ .map .legend-content {
+  display: block;
+}
+
+#comulative:checked ~ .map .circle {
+  background: #ff0000;
+}
+#active:checked ~ .map .circle {
+  background: #e38b4f;
+}
+#incidence:checked ~ .map .circle {
+  background: #ffff00;
+}
+#fatality:checked ~ .map .circle {
+  background: #ffffff;
+}
+
+.icon-incidence {
+  display: none;
+}
+#incidence:checked ~ #map .legend__item {
+  display: none;
+}
+#incidence:checked ~ #map .icon-incidence {
+  display: block;
+}
+
+.icon-marker {
+  h2 {
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 0;
+  }
+  &-tooltip {
+    padding: 3px;
+    border-radius: 5px;
+    width: 150px;
+    max-height: 200px;
+    position: absolute;
+    bottom: 10px;
+    left: -50%;
+    display: none;
+    font-size: 12px;
+    background-color: #1a1a1a;
+    color: #808080;
+    p {
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+  &:hover {
+    .icon-marker-tooltip {
+      display: block;
+    }
+  }
+}
+.flag {
+  height: 15px;
+  margin: 0;
+  margin-right: 3px;
+}
+
+.confirmed {
+  color: #ff0000;
+}
+.recovered {
+  color: #008000;
+}
+.active {
+  color: #e38b4f;
+}
